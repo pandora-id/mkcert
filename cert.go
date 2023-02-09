@@ -64,7 +64,7 @@ func (m *mkcert) makeCert(hosts []string) {
 	tpl := &x509.Certificate{
 		SerialNumber: randomSerialNumber(),
 		Subject: pkix.Name{
-			Organization:       []string{"mkcert development certificate"},
+			Organization:       []string{"Pandora Development Certificate"},
 			OrganizationalUnit: []string{userAndHostname},
 		},
 
@@ -327,13 +327,13 @@ func (m *mkcert) newCA() {
 	tpl := &x509.Certificate{
 		SerialNumber: randomSerialNumber(),
 		Subject: pkix.Name{
-			Organization:       []string{"mkcert development CA"},
+			Organization:       []string{"Pandora Certificate Authority"},
 			OrganizationalUnit: []string{userAndHostname},
 
 			// The CommonName is required by iOS to show the certificate in the
 			// "Certificate Trust Settings" menu.
 			// https://github.com/FiloSottile/mkcert/issues/47
-			CommonName: "mkcert " + userAndHostname,
+			CommonName: "Pandora Certificate for " + userAndHostname,
 		},
 		SubjectKeyId: skid[:],
 
@@ -364,5 +364,5 @@ func (m *mkcert) newCA() {
 }
 
 func (m *mkcert) caUniqueName() string {
-	return "mkcert development CA " + m.caCert.SerialNumber.String()
+	return "Pandora Certificate Authority " + m.caCert.SerialNumber.String()
 }
